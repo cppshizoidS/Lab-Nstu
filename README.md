@@ -1,2 +1,3 @@
 # Lab-Nstu
-This is my lab works in nstu (2 semestr)
+This is my lab works in nstu
+Folder Second Semester contains programming labs
