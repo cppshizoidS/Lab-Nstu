@@ -1,4 +1,4 @@
-##include <stdio.h>
+#include <stdio.h>
 #include "lab1_8.h"
 int main() {
     printf("\nВведите A, B, C, D: ");
