@@ -1,4 +1,4 @@
-##include <stdio.h>
+#include <stdio.h>
 
 int main() {
     auto int A, B, C, D;
