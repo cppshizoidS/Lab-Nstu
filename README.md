@@ -4,9 +4,9 @@ This is my lab works in NSTU
 Folder Second Semester contains programming labs in 
 [![](https://img.shields.io/badge/C-00599C?style=for-the-badge&logo=c&logoColor=white)](C/)
 ---
-* [1. ](Lab-Nstu/2Sem/Lab1)
-* [2. ](Lab-Nstu/2Sem/Lab2)
-* [3. ](Lab-Nstu/2Sem/Lab3)
+* [1. Base Math Operarions](Lab-Nstu/2Sem/Lab1)
+* [2. Strings](Lab-Nstu/2Sem/Lab2)
+* [3. Operations wirh strings](Lab-Nstu/2Sem/Lab3)
 * [4. ](Lab-Nstu/2Sem/Lab4)
 
 
