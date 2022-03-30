@@ -13,7 +13,7 @@ Second Semester: programming labs in
 
 Folder Third Semestr contains labs of programming and comp_graph in 
 [![](https://img.shields.io/badge/C-00599C?style=for-the-badge&logo=c&logoColor=white)](C/)
-
+---
 --------------------------------------------------------------------
 ![](https://tokei.rs/b1/github/cppshizoidS/Lab-Nstu?category=code)
 
