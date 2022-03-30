@@ -7,7 +7,7 @@ Folder Second Semester contains programming labs in
 * [1. Base Math Operarions](Lab-Nstu/2Sem/Lab1)
 * [2. Strings](Lab-Nstu/2Sem/Lab2)
 * [3. Operations wirh strings](Lab-Nstu/2Sem/Lab3)
-* [4. ](Lab-Nstu/2Sem/Lab4)
+* [4. Sort of string elements ](Lab-Nstu/2Sem/Lab4)
 
 
 
