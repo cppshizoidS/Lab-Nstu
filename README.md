@@ -17,8 +17,8 @@ Folder Third Semestr contains labs of programming and comp_graph in
 Programming:
 * .[1.Work with files](Lab-Nstu/3_Semestr/Programming/Lab_1)
 * .[2.Create a self lib](Lab-Nstu/3_Semestr/Programming/Lab_2)
-* .[3.](Lab-Nstu/3_Semestr/Programming/Lab_3)
-* .[4. ](Lab-Nstu/3_Semestr/Programming/Lab_4)
+* .[3.Work with files](Lab-Nstu/3_Semestr/Programming/Lab_3)
+* .[4.Client-Server ](Lab-Nstu/3_Semestr/Programming/Lab_4)
 --------------------------------------------------------------------
 
 ![](https://tokei.rs/b1/github/cppshizoidS/Lab-Nstu?category=code)
