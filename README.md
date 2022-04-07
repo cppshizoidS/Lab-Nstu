@@ -20,6 +20,5 @@ Programming:
 * .[3.Work with files](Lab-Nstu/3_Semestr/Programming/Lab_3)
 * .[4.Client-Server ](Lab-Nstu/3_Semestr/Programming/Lab_4)
 --------------------------------------------------------------------
-
 ![](https://tokei.rs/b1/github/cppshizoidS/Lab-Nstu?category=code)
 
