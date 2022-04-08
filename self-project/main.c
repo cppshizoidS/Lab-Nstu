@@ -6,7 +6,6 @@
 #define MAX 200
 
 struct Bank
-
 {
     char name[20]; //Элемент структуры name
     int birthday; //Элемент структуры birthday
@@ -21,17 +20,11 @@ int num = 0;
 void add_record() //Функция ввода информации
 
 {
-
     struct Bank bank; // Объявляем переменную-структуру
-
     if (num == MAX) //Показывает, если список будет переполнен
-
     {
-
         printf("\nСписок переполнен\n");
-
         return;
-
     }
 
     printf("\nВведите номер элемента\n");
@@ -41,37 +34,26 @@ void add_record() //Функция ввода информации
     scanf("%d", &currNum);
 
     if (currNum < 0 || currNum >= MAX) //Показывает, если номер эл. будет равен 0 или больше 200
-
     {
-
         printf("\nНеверный номер элемента\n");
-
         return;
-
     }
 
     printf("\nФамилия: ");
-
     scanf("%s", &bank.name);
 
     printf("Год рождения: ");
-
     scanf("%d", &bank.birthday);
 
     printf("Оклад: ");
-
     scanf("%d", &bank.oklad);
 
     printf("Человек занесен в список\n");
 
     if (currNum >= num) //Выдает, если указанный номер элемента некорректен
-
     {
-
         if (currNum != (num + 1)) {
-
             printf("\nНекорректный номер элемента. Элемент будет добавлен в конец списка.\n");
-
         }
 
         currNum = ++num;
@@ -317,15 +299,12 @@ int main() {
                 add_record();
                 break;
             }
-
             case '2':
             {
                 show_one_record();
 
                 break;
             }
-
-
             case '3':
 
                 show_all_record();
