@@ -28,7 +28,7 @@ Fourth Semester: programming labs in
 ADS:
 
 * [1. Struct of Data](https://github.com/cppshizoidS/Lab-Nstu/tree/main/4_Semestr/ADS/Lab_1)
-* [2. ](https://github.com/cppshizoidS/Lab-Nstu/tree/main/4_Semestr/ADS/Lab_1)
+* [2. ](https://github.com/cppshizoidS/Lab-Nstu/tree/main/4_Semestr/ADS/Lab_2)
 --------------------------------------------------------------------
 ![](https://tokei.rs/b1/github/cppshizoidS/Lab-Nstu?category=code)
 
