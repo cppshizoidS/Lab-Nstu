@@ -24,6 +24,9 @@ Programming:
 
 Fourth Semester: programming labs in 
 [![](https://img.shields.io/badge/C%2B%2B-00599C?style=for-the-badge&logo=c%2B%2B&logoColor=white)](C++/)
+---
+ADS:
+*[1. ](Lab-Nstu/4_Semestr/ASD/Lab_1)
 --------------------------------------------------------------------
 ![](https://tokei.rs/b1/github/cppshizoidS/Lab-Nstu?category=code)
 
