@@ -5,9 +5,9 @@ Second Semester: programming labs in
 [![](https://img.shields.io/badge/C-00599C?style=for-the-badge&logo=c&logoColor=white)](C/)
 ---
 * [1. Base Math Operarions](https://github.com/cppshizoidS/Lab-Nstu/tree/main/2_Semestr/Lab1)
-* [2. Strings](Lab-Nstu/2Sem/Lab2)
-* [3. Operations wirh strings](Lab-Nstu/2Sem/Lab3)
-* [4. Function Pointers ](Lab-Nstu/2Sem/Lab4)
+* [2. Strings](https://github.com/cppshizoidS/Lab-Nstu/tree/main/2_Semestr/Lab2)
+* [3. Operations wirh strings](https://github.com/cppshizoidS/Lab-Nstu/tree/main/2_Semestr/Lab3)
+* [4. Function Pointers ](https://github.com/cppshizoidS/Lab-Nstu/tree/main/2_Semestr/Lab4)
 
 
 
