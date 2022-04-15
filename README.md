@@ -19,6 +19,11 @@ Programming:
 * [2. Create a self lib](Lab-Nstu/3_Semestr/Programming/Lab_2)
 * [3. Work with files](Lab-Nstu/3_Semestr/Programming/Lab_3)
 * [4. Client-Server ](Lab-Nstu/3_Semestr/Programming/Lab_4)
+
+
+
+Fourth Semester: programming labs in 
+[![](https://img.shields.io/badge/C%2B%2B-00599C?style=for-the-badge&logo=c%2B%2B&logoColor=white)](C++/)
 --------------------------------------------------------------------
 ![](https://tokei.rs/b1/github/cppshizoidS/Lab-Nstu?category=code)
 
