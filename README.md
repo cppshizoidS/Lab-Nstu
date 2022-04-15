@@ -15,10 +15,10 @@ Folder Third Semestr contains labs of programming and comp_graph in
 [![](https://img.shields.io/badge/C-00599C?style=for-the-badge&logo=c&logoColor=white)](C/)
 ---
 Programming:
-* [1. Work with files](Lab-Nstu/3_Semestr/Programming/Lab_1)
-* [2. Create a self lib](Lab-Nstu/3_Semestr/Programming/Lab_2)
-* [3. Work with files](Lab-Nstu/3_Semestr/Programming/Lab_3)
-* [4. Client-Server ](Lab-Nstu/3_Semestr/Programming/Lab_4)
+* [1. Work with files](https://github.com/cppshizoidS/Lab-Nstu/tree/main/3_Semestr/Programming/Lab_1)
+* [2. Create a self lib](https://github.com/cppshizoidS/Lab-Nstu/tree/main/3_Semestr/Programming/Lab_2)
+* [3. Work with files](https://github.com/cppshizoidS/Lab-Nstu/tree/main/3_Semestr/Programming/Lab_3)
+* [4. Client-Server ](https://github.com/cppshizoidS/Lab-Nstu/tree/main/3_Semestr/Programming/Lab_4)
 
 
 
@@ -27,8 +27,8 @@ Fourth Semester: programming labs in
 ---
 ADS:
 
-* [1. Struct of Data](Lab-Nstu/4_Semestr/ASD/Lab_1)
-* [2. ](Lab-Nstu/4_Semestr/ASD/Lab_2)
+* [1. Struct of Data](https://github.com/cppshizoidS/Lab-Nstu/tree/main/4_Semestr/ADS/Lab_1)
+* [2. ](https://github.com/cppshizoidS/Lab-Nstu/tree/main/4_Semestr/ADS/Lab_1)
 --------------------------------------------------------------------
 ![](https://tokei.rs/b1/github/cppshizoidS/Lab-Nstu?category=code)
 
