@@ -18,8 +18,7 @@
 #define MAX_FILES 16
 
 
-int
-main()
+int main()
 {
     pid_t  pid    = 0;
     int    status = 0;
