@@ -1,3 +1,12 @@
+#include <stdio.h>
+#include <string.h>
+
+#define TRUE 1
+#define FALSE 0
+
+#define size 4
+#define size_str 127
+
 void inp_str(char* str, int* maxlen) {
     char start = TRUE;
     int len = strlen(str);
