@@ -1,235 +1,214 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <locale.h>
-#include <stdbool.h>
+#include <stdlib.h> // Функции работы с памятью
+#include <iostream> // Функциями и переменными для организации ввода-вывода
+#include <string.h>// Функции работы со строками
 
-#define AMOUNT_OF_BOOKS 300 // Количество записей
-#define LETTERS 24 // Максимальная длина названия книги
-#define PATH_TO_DB "books.txt"
+#define MAX 100
 
-typedef struct
+struct Firms
 {
-    char name[LETTERS]; // Название книги
-    int pages; // Количество страниц
-    int price; // Цена
-} Book;
+    char name[20]; //Элемент структуры name
+    int number; //Элемент структуры number
+    int oklad; //Элемент структуры oklad
+};
 
-// Прототипы функций
-void add_book();
-void print_book();
-void sort_by_price();
-void print_library();
-void save_library_to_file();
-void load_library_from_file();
-
-Book library[AMOUNT_OF_BOOKS];
-bool books_sorted;
-
-int main()
+struct Firms mas[MAX]; // Объявляем указатель на переменную-структуры
+int num = 0;
+void add_record() //Функция ввода информации
 {
-    setlocale(LC_ALL, "RUS"); // поддержка русского языка для вывода в консоли
-
-    books_sorted = false;
-
-    // помечаем каждый элемент БД как '-1',
-    // что будет означать, что элемент не записан
-    for (int book = 0; book < AMOUNT_OF_BOOKS; book++)
-        library[book].price = -1;
-
-    int function = 0;
-    do
+    struct Firms firm; // Объявляем переменную-структуру
+    if (num == MAX) //Показывает, если список будет переполнен
     {
-        printf("\n\n*** База данных ***\n");
-        printf("(1) Ввод записи с произвольным номером\n");
-        printf("(2) Вывод записи с заданным номером\n");
-        printf("(3) Сортировка записей по цене в порядке возрастания\n");
-        printf("(4) Вывод на экран всех записей в отсортированном виде\n");
-        printf("(5) Сохранение всех записей в файле\n");
-        printf("(6) Чтение записей из файла\n");
-        printf("(0) Выход из программы\n");
+        printf("\nСписок переполнен\n");
+        return;
+    }
 
-        printf("\nНомер команды: ");
-        scanf("%d", &function);
+    printf("\nВведите номер элемента\n");
+    int currNum;
+    scanf("%d", &currNum);
+    if (currNum < 0 || currNum >= MAX) //Показывает, если номер эл. будет равен 0 или больше 100
+    {
+        printf("\nНеверный номер элемента\n");
+        return;
+    }
 
-        switch (function)
-        {
-            case 1:
-                add_book();
-                break;
-            case 2:
-                print_book();
-                break;
-            case 3:
-                sort_by_price();
-                break;
-            case 4:
-                print_library();
-                break;
-            case 5:
-                save_library_to_file();
-                break;
-            case 6:
-                load_library_from_file();
-                break;
-            default:
-                printf("№%d - неверная команда\n", function);
-                break;
+    printf("\nФамилия: ");
+    scanf("%s", &firm.name);
+    printf("Год рождения: ");
+    scanf("%d", &firm.number);
+    printf("Оклад: ");
+    scanf("%d", &firm.oklad);
+    printf("Человек занесен в список\n");
+
+    if (currNum >= num) //Выдает, если указанный номер элемента некорректен
+    {
+        if (currNum != (num + 1)) {
+            printf("\nНекорректный номер элемента. Элемент будет добавлен в конец списка.\n");
         }
-    } while (function != 0);
 
-    return 0;
-}
+        currNum = ++num;
 
-void add_book()
-{
-    int book_num;
+        struct Firms temp[MAX];
 
-    printf("# Запись №: ");
-    scanf("%d", &book_num);
-    book_num--;
-
-    printf("## Ввод новой записи\n");
-
-    printf("#### Название фирмы: ");
-    scanf("%s", library[book_num].name);
-
-    printf("#### Количество работников: ");
-    scanf("%d", &library[book_num].pages);
-
-    printf("#### Уставной капитал: ");
-    scanf("%d", &library[book_num].price);
-
-    books_sorted = false;
-}
-
-void print_book()
-{
-    int book_num;
-
-    printf("# Запись №: ");
-    scanf("%d", &book_num);
-    book_num--;
-
-    if (library[book_num].price > 0)
-    {
-        printf("## Запись №%d ##\n", book_num+1);
-        printf("#### Название книги: %s\n", library[book_num].name);
-        printf("#### Количество страниц: %d\n", library[book_num].pages);
-        printf("#### Цена: %d\n", library[book_num].price);
+        if (num > 1) {
+            for (int i = 0; i < (num - 1); i++) {
+                temp[i] = mas[i];
+            }
+        }
     }
-    else
-    {
-        printf("## Нет записей по номеру %d\n", book_num+1);
+    mas[currNum - 1] = firm;
+}
+
+void show_one_record() // вывести одну запись
+
+{
+
+    if (num == 0) printf("\nСписок пуст\n"); //Выводит, если список пуст
+
+    else {
+        int a;
+        printf("\nВведите номер записи: ");
+        scanf("%d", &a);
+
+        if (a > 0 && a <= num) {
+            printf("Человек №%d\n", a);
+            printf("Фамилия: %s\n", mas[a - 1].name);
+            printf("Год рождения: %d\n", mas[a - 1].number);
+            printf("Оклад: %d\n", mas[a - 1].oklad);
+        } else {
+            printf("\nИнформация о данной записи отсутвует\n");
+        }
     }
 }
 
-void sort_by_price()
+void show_all_record() // показать информацию о всех
 {
-    if (!books_sorted)
+    if (num == 0) //Выводит, если список пуст
     {
-        // классический пузырьковый алгоритм сортировки
-        for (int i = 0; i < AMOUNT_OF_BOOKS; i++)
-        {
-            for (int book = AMOUNT_OF_BOOKS-1; book > 0; book--)
-            {
-                // выполняем перестановку если:
-                if (library[book-1].price < 0 || // запись отутствует
-                    (library[book].price   > 0 && // запись есть И
-                     library[book].price   < library[book-1].price)) // она удовлетворяет условию сортировки
+        printf("\nСписок пуст\n");
+    } else {
+        for (int i = 0; i < num; i++) {
+            printf("\nЧеловек № %d", i + 1);
+            printf("\nФамилия: %s", mas[i].name);
+            printf("\nГод рождения: %d", mas[i].number);
+            printf("\nОнлайн: %d\n", mas[i].oklad);
+        }
+    }
+}
+
+void sorting() //сортировка
+{
+    if (num == 0) //Выводит, если список пуст
+    {
+        printf("\nСписок пуст\n");
+    } else {
+        struct Firms temp;// Объявляем переменную-структуру
+        for (int i = 0; i < num - 1; i++)
+            for (int j = i + 1; j < num; j++)
+                if ((mas + i)->number < (mas + j)->number)
                 {
-                    Book temp_book = library[book-1];
-                    library[book-1] = library[book];
-                    library[book] = temp_book;
+                    temp = *(mas + i); //Применяем сортировку методом пузырька: сравниваем 2 элемента и если они идут в неправильном порядке, то меняем их местами
+                    *(mas + i) = *(mas + j);
+                    *(mas + j) = temp;
                 }
-            }
-        }
-
-        printf("# Сортировка выполнена\n");
-        books_sorted = true;
     }
+    printf("\nОтсортировано\n");
 }
 
-void print_library() {
-    if (!books_sorted)
-        sort_by_price();
-
-    for (int book = 0; book < AMOUNT_OF_BOOKS; book++)
-    {
-        if (library[book].price > 0)
-        {
-            printf("## Запись №%d ##\n", book+1);
-            printf("#### Название книги: %s\n", library[book].name);
-            printf("#### Количество страниц: %d\n", library[book].pages);
-            printf("#### Цена: %d\n", library[book].price);
-        }
-    }
-}
-
-void save_library_to_file()
+void save() // сохранение в файл
 {
-    // открытие файла для запись - w
-    FILE* books_db = fopen(PATH_TO_DB, "w");
-
-    if (books_db != NULL) // проверка, открыт ли файл
+    FILE *f;
+    if ((f = fopen("data.txt", "wt")) == NULL) //wt - открывает текстовый файл для записи
     {
-        int amount_of_books = 0;
-
-        for (int book = 0; book < AMOUNT_OF_BOOKS; book++)
-        {
-            if (library[book].price > 0)
-            {
-                amount_of_books++;
-            }
-        }
-        fprintf(books_db, "~%d~\n", amount_of_books);
-
-        for (int book = 0; book < AMOUNT_OF_BOOKS; book++)
-        {
-            if (library[book].price > 0)
-            {
-                fprintf(books_db, "%s %d %d\n", library[book].name, library[book].pages, library[book].price);
-            }
-        }
-
-        printf("# Записи о книгах сохранены в файл '%s'\n", PATH_TO_DB);
-    }
-    else
-    {
-        printf("# Не удалось сохранить записи\n");
+        printf("\nОшибка при открытии файла\n");
+        return;
     }
 
-    fclose(books_db); // закрытие файла
+    for (int i = 0; i < num; i++) {
+        fprintf(f, "%s\n", mas[i].name);
+        fprintf(f, "%d\n", mas[i].number);
+        fprintf(f, "%d\n", mas[i].oklad);
+    }
+
+    printf("\nСохранено\n");
+    fclose(f);
 }
 
-void load_library_from_file()
+void load() // загрузка из файла
 {
-    // открытие файла на чтение - r
-    FILE* books_db = fopen(PATH_TO_DB, "r");
-
-    if (books_db != NULL) // проверка, открыт ли файл
-    {
-        // помечаем каждую ячейку БД как пустую,
-        // чтобы очистить её перед заполнением из файла
-        for (int book = 0; book < AMOUNT_OF_BOOKS; book++)
-        {
-            library[book].price = -1;
-        }
-
-        int amount_of_books = 0;
-        fscanf(books_db, "~%d~\n", &amount_of_books);
-
-        for (int book = 0; book < amount_of_books; book++)
-        {
-            fscanf(books_db, "%s %d %d\n", library[book].name, &library[book].pages, &library[book].price);
-        }
-
-        printf("# Записи о книгах загружены из файла '%s'\n", PATH_TO_DB);
-    }
-    else
-    {
-        printf("# Не удалось загрузить записи\n");
+    FILE *f;
+    f = fopen("data.txt", "rt"); //rt - открывает текстовый файл для чтения
+    if (f == NULL) {
+        printf("\nОшибка при открытии файла\n");
+        return;
     }
 
-    fclose(books_db); // закрытие файла
-    books_sorted = false;
+    int i;
+    for (i = 0; !feof(f) && i < MAX; i++) // Функция feof проверяет, достигнут ли конец файла, связанного с потоком. Возвращается значение, отличное от нуля, если конец файла был действительно достигнут.
+    {
+        if (feof(f)) break;
+        struct Firms temp[MAX]; // Объявляем переменную-структуру
+        for (int j = 0; j < i; j++) {
+            temp[j] = mas[j];
+        }
+
+        fscanf(f, "%s", &temp[i].name);
+        fscanf(f, "%d", &temp[i].number);
+        fscanf(f, "%d", &temp[i].oklad);
+
+        *mas = *temp;
+    }
+
+    num = i - 1;
+    printf("\nЗагружено\n");
+    fclose(f);
+}
+
+int main() {
+    setlocale(LC_ALL, "Russian");
+
+    for (;;) //Бесконечный цикл
+    {
+        char choice = '0';
+        while (choice < '1' || choice > '7') {
+            printf("\nКоличество записей: %d/%d", num, MAX);
+            printf("\n1.Добавить запись");
+            printf("\n2.Показать запись");
+            printf("\n3.Показать все записи");
+            printf("\n4.Сортировка");
+            printf("\n5.Сохранить в файл");
+            printf("\n6.Загрузить из файла");
+            printf("\n7.Выход");
+            printf("\nВыбор действия: ");
+            scanf("%c",&choice);
+            printf("\n");
+        }
+
+        switch (choice) //Оператор множественного выбора
+        {
+            case '1':
+            {
+                add_record();
+                break;
+            }
+            case '2':
+            {
+                show_one_record();
+                break;
+            }
+            case '3':
+                show_all_record();
+                break;
+            case '4':
+                sorting();
+                break;
+            case '5':
+                save();
+                break;
+            case '6':
+                load();
+                break;
+            case '7':
+                exit(0);
+        }
+    }
 }
