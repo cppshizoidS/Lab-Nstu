@@ -16,8 +16,7 @@
 size_t replace(char *str, char old_pair[2], char new_pair[2]);
 
 
-int
-main(int argc, char **argv)
+int main(int argc, char **argv)
 {
   int  replaces = 0;
   int  fd       = 0;
