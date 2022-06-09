@@ -1,75 +1,70 @@
 #include <stdio.h>
-#include <sys/types.h>
-#include <fcntl.h>
+#include <stdlib.h>
 #include <string.h>
-#include <errno.h>
 #include <unistd.h>
+#include <errno.h>
+#include <fcntl.h>
 
-#include "../mytools.h"
+#define SIZE 256
 
-#define PAIR         2
-#define BUF_SIZE     128
-#define NEW_PAIR     "#@"
-#define OUTPUT_FILE  "output.txt"
+int main(int argc, char *argv[]) {
+  int inputFd, outputFd, openFlags;
+  mode_t filePerms;
+  char buf, str[SIZE], newStr[SIZE];
 
+  if (argc != 3) {
+    printf("To use this programm: <prog_name> <file_name> <spaces_to_delete>\n");
+    exit(-1);
+  }
 
-size_t replace(char *str, char old_pair[2], char new_pair[2]);
+  inputFd = open(argv[1], O_RDONLY);
 
+  if (inputFd < 0) {
+    printf("Error %d (%s) while open file: %s!\n",errno, strerror(errno), argv[1]);
+    exit(-2);
+  }
 
-int main(int argc, char **argv)
-{
-  int  replaces = 0;
-  int  fd       = 0;
+  int charNums = 0;
 
-  char buf[BUF_SIZE] = {0};
+  while (read(inputFd, &buf, 1) > 0) {
+    str[charNums] = buf;
+    charNums++;
+  }
 
-  if (argc != 3 || strlen(argv[2]) != 2)
-    {
-      printf("wrong args\n");
-      printf("usage:\tlab1_13 <input_file> <char_pair>\n");
-      return -1;
-    }
+  close(inputFd);
 
+  int spaces = 0;
+  int toDelete = (int) *argv[2] - 48;
 
-  fd = open(argv[1], O_RDONLY);
-  ERR_CHECK(fd, -1)
+  if (toDelete < 0) {
+    printf("Expected positive number of spaces\n");
+    exit(-1);
+  }
 
-  // считывание содержимого файла
-  TRY(read(fd, buf, BUF_SIZE))
-  TRY(close(fd))
-
-  // обработка полученного содержимого
-  replaces = replace(buf, argv[2], NEW_PAIR);
-
-
-  fd = open(OUTPUT_FILE, O_WRONLY | O_CREAT, 0666);
-  ERR_CHECK(fd, -1)
-
-  // запись изменённого содержимого в новый файл
-  TRY(write(fd, buf, strlen(buf)))
-  TRY(close(fd))
-
-
-  return replaces;
-}
+  for (int i = 0; i < charNums; i++) {
+    if (str[i] == ' ' && spaces < toDelete) spaces++;
+    else newStr[i - spaces] = str[i];
+  }
+  newStr[charNums - spaces] = '\0';
+    
+    
+  openFlags = O_CREAT | O_WRONLY | O_TRUNC;
+  filePerms = S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH | S_IWOTH;
 
 
-size_t
-replace(char *str, char old_pair[2], char new_pair[2])
-{
-  size_t replaces = 0;
+  outputFd = open("./build/lab1.text", openFlags, filePerms);
 
-  for (size_t ltr = 0; str[ltr + 1] != '\0'; ltr++)
-    {
-      if (str[ltr] == old_pair[0] && str[ltr + 1] == old_pair[1])
-        {
-          str[ltr]     = new_pair[0];
-          str[ltr + 1] = new_pair[1];
+  if (outputFd == -1) {
+    printf ("Error opening file %s\n ", "./build/lab1.text"); 
+    exit(-3);
+  }
 
-          ltr++;
-          replaces++;
-        }
-    }
+  if(!write(outputFd, newStr, strlen(newStr))) {
+    printf("Wild Error Appear!");
+  }
 
-  return replaces;
+  close (outputFd);
+  printf("Program Done Sucessfully");
+
+  return 0;
 }
